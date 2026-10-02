@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="el" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+<title>Vaultic — Zero-Knowledge Θησαυροφυλάκιο Αρχείων για Δημιουργούς & Στούντιο</title>
+<meta name="description" content="Το Vaultic είναι το κρυπτογραφημένο θησαυροφυλάκιο για δημιουργούς και στούντιο. Στείλε drafts, έλεγξε την πρόσβαση, βάλε υδατογραφήματα, και δες ποιος άνοιξε τι — χωρίς να εκτεθεί ποτέ το έργο σου. SOC 2 Type II · GDPR-ready." />
+<meta name="keywords" content="κρυπτογραφημένη κοινή χρήση αρχείων, zero-knowledge θησαυροφυλάκιο, ασφαλής μεταφορά αρχείων, portal πελατών, υδατογράφημα αρχείων, λήγοντες σύνδεσμοι, ασφαλής κοινή χρήση" />
+<meta name="author" content="Vaultic Labs, S.L." />
+<meta name="publisher" content="Vaultic Labs, S.L." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<meta name="theme-color" content="#06060A" />
+<meta name="color-scheme" content="dark" />
+<link rel="canonical" href="https://vaultic.app/el/" />
+
+<link rel="alternate" hreflang="en" href="https://vaultic.app/" />
+<link rel="alternate" hreflang="el" href="https://vaultic.app/el/" />
+<link rel="alternate" hreflang="x-default" href="https://vaultic.app/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Vaultic" />
+<meta property="og:url" content="https://vaultic.app/el/" />
+<meta property="og:title" content="Vaultic — Μοιράσου με τόλμη. Μείνε ιδιωτικός." />
+<meta property="og:description" content="Zero-knowledge θησαυροφυλάκιο αρχείων για δημιουργούς και στούντιο. Κρυπτογραφημένη κοινή χρήση, λεπτομερή δικαιώματα, λήγοντες σύνδεσμοι και analytics σε πραγματικό χρόνο." />
+<meta property="og:image" content="https://vaultic.app/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Vaultic — προεπισκόπηση κρυπτογραφημένου θησαυροφυλακίου" />
+<meta property="og:locale" content="el_GR" />
+<meta property="og:locale:alternate" content="en_US" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@vaultic" />
+<meta name="twitter:creator" content="@vaultic" />
+<meta name="twitter:title" content="Vaultic — Μοιράσου με τόλμη. Μείνε ιδιωτικός." />
+<meta name="twitter:description" content="Zero-knowledge θησαυροφυλάκιο αρχείων για δημιουργούς και στούντιο." />
+<meta name="twitter:image" content="https://vaultic.app/og-image.png" />
+<meta name="twitter:image:alt" content="Vaultic — προεπισκόπηση κρυπτογραφημένου θησαυροφυλακίου" />
+
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'" />
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
+</noscript>
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+        },
+        colors: {
+          ink: { 950:'#06060A', 900:'#0A0A0B', 850:'#0E0E11', 800:'#121215', 700:'#17171B', 600:'#1E1E23' },
+          silver: { 100:'#F2F2F5', 200:'#DCDCE3', 300:'#B8B8C1', 400:'#8A8A93', 500:'#5F5F68', 600:'#3A3A42' },
+        },
+        keyframes: {
+          fadeUp:    { '0%':{opacity:'0',transform:'translateY(24px)'}, '100%':{opacity:'1',transform:'translateY(0)'} },
+          marquee:   { '0%':{transform:'translateX(0)'}, '100%':{transform:'translateX(-50%)'} },
+          glowPulse: { '0%,100%':{opacity:'0.35'}, '50%':{opacity:'0.7'} },
+          floatY:    { '0%,100%':{transform:'translateY(0)'}, '50%':{transform:'translateY(-10px)'} },
+        },
+        animation: {
+          'fade-up':'fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards',
+          'marquee':'marquee 45s linear infinite',
+          'glow':'glowPulse 5s ease-in-out infinite',
+          'float':'floatY 6s ease-in-out infinite',
+        },
+      }
+    }
+  }
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://vaultic.app/#organization",
+      "name": "Vaultic",
+      "legalName": "Vaultic Labs, S.L.",
+      "url": "https://vaultic.app/",
+      "logo": { "@type": "ImageObject", "url": "https://vaultic.app/logo.png", "width": 512, "height": 512 },
+      "sameAs": ["https://twitter.com/vaultic","https://github.com/vaultic","https://linkedin.com/company/vaultic"],
+      "contactPoint": [{ "@type": "ContactPoint", "contactType": "sales", "email": "sales@vaultic.app", "availableLanguage": ["en","el","es"] }]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://vaultic.app/el/#website",
+      "url": "https://vaultic.app/el/",
+      "name": "Vaultic",
+      "publisher": { "@id": "https://vaultic.app/#organization" },
+      "inLanguage": "el-GR"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://vaultic.app/el/#software",
+      "name": "Vaultic",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "Zero-knowledge κρυπτογραφημένο θησαυροφυλάκιο αρχείων για δημιουργούς και στούντιο.",
+      "url": "https://vaultic.app/el/",
+      "inLanguage": "el-GR",
+      "publisher": { "@id": "https://vaultic.app/#organization" },
+      "offers": [
+        { "@type": "Offer", "name": "Solo",   "price": "0",  "priceCurrency": "EUR", "description": "2 GB κρυπτογραφημένο θησαυροφυλάκιο" },
+        { "@type": "Offer", "name": "Studio", "price": "19", "priceCurrency": "EUR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "19", "priceCurrency": "EUR", "unitText": "MONTH" }, "description": "500 GB κρυπτογραφημένο θησαυροφυλάκιο" },
+        { "@type": "Offer", "name": "Agency", "price": "59", "priceCurrency": "EUR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "59", "priceCurrency": "EUR", "unitText": "MONTH" }, "description": "Απεριόριστος χώρος" }
+      ],
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "127" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://vaultic.app/el/#faq",
+      "inLanguage": "el-GR",
+      "mainEntity": [
+        { "@type": "Question", "name": "Μπορεί πραγματικά το Vaultic να μη βλέπει τα αρχεία μου;", "acceptedAnswer": { "@type": "Answer", "text": "Σωστά. Τα αρχεία κρυπτογραφούνται στον browser σου με κλειδιά που παράγονται από τη φράση πρόσβασής σου, πριν γίνει οποιοδήποτε upload." } },
+        { "@type": "Question", "name": "Τι γίνεται αν ανακαλέσω έναν σύνδεσμο που έχει ήδη ανοίξει κάποιος;", "acceptedAnswer": { "@type": "Answer", "text": "Η πρόσβαση τερματίζεται αμέσως. Κάθε ανοιχτή συνεδρία ακυρώνεται στο επόμενο request." } },
+        { "@type": "Question", "name": "Χρειάζονται λογαριασμό οι πελάτες μου;", "acceptedAnswer": { "@type": "Answer", "text": "Όχι. Πατάνε τον σύνδεσμο, επιβεβαιώνονται με magic code ή φράση πρόσβασης, και το αρχείο αποκρυπτογραφείται απευθείας στον browser τους." } },
+        { "@type": "Question", "name": "Μπορώ να χρησιμοποιήσω το Vaultic για εργασία υπό κανονιστικό πλαίσιο;", "acceptedAnswer": { "@type": "Answer", "text": "Ναι. Το Vaultic είναι πιστοποιημένο SOC 2 Type II, συμμορφώνεται με GDPR, και προσφέρει BAAs έτοιμα για HIPAA." } },
+        { "@type": "Question", "name": "Πώς διαφέρει από το WeTransfer ή το Dropbox;", "acceptedAnswer": { "@type": "Answer", "text": "Είναι εξαιρετικά στην αποθήκευση. Εμείς είμαστε φτιαγμένοι για έλεγχο." } }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  html, body { background: #06060A; }
+  body { color: #F2F2F5; -webkit-font-smoothing: antialiased; }
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 68px 68px;
+  }
+  .mask-fade {
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 40%, transparent 100%);
+            mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 40%, transparent 100%);
+  }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1); transition-delay: var(--d, 0ms); }
+  .reveal.in { opacity: 1; transform: none; }
+  .glass { background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015)); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.08); }
+  .text-silver-grad { background: linear-gradient(180deg, #FFFFFF 0%, #B8B8C1 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: #0A0A0B; }
+  ::-webkit-scrollbar-thumb { background: #1E1E23; border-radius: 999px; }
+  ::-webkit-scrollbar-thumb:hover { background: #2A2A31; }
+  .faq-body { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.16,1,0.3,1); }
+  .faq-item.open .faq-body { max-height: 320px; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .nav-scrolled { background: rgba(6,6,10,0.75); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+</style>
+</head>
+
+<body class="font-sans antialiased bg-ink-950 text-silver-100 overflow-x-hidden">
+
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-silver-100 focus:text-ink-950 focus:rounded-full focus:text-sm focus:font-medium">Μετάβαση στο περιεχόμενο</a>
+
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="h-16 flex items-center justify-between">
+
+      <a href="index.html" class="flex items-center gap-2.5 group" aria-label="Vaultic — αρχική">
+        <div class="relative w-8 h-8 rounded-lg bg-gradient-to-b from-silver-100 to-silver-400 flex items-center justify-center shadow-[0_0_24px_-6px_rgba(255,255,255,0.35)]">
+          <svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4 text-ink-950" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6l-8-4Z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
+        <span class="font-semibold tracking-tight text-[15px]">Vaultic</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-[13.5px] text-silver-300" aria-label="Κύρια">
+        <a href="#features" class="hover:text-white transition-colors">Χαρακτηριστικά</a>
+        <a href="#security" class="hover:text-white transition-colors">Ασφάλεια</a>
+        <a href="#pricing"  class="hover:text-white transition-colors">Τιμές</a>
+        <a href="#faq"      class="hover:text-white transition-colors">Συχνές ερωτήσεις</a>
+      </nav>
+
+      <div class="hidden md:flex items-center gap-3">
+        <!-- Language switcher (relative paths — works locally + in production) -->
+        <div class="flex items-center gap-1.5 ml-2 pl-4 border-l border-white/10">
+          <a href="../index.html" class="font-mono text-[11px] tracking-wider text-silver-400 hover:text-white transition-colors" hreflang="en" lang="en">EN</a>
+          <span class="text-silver-600">/</span>
+          <a href="index.html" class="font-mono text-[11px] tracking-wider text-white" hreflang="el" lang="el" aria-current="page">EL</a>
+        </div>
+        <a href="#" class="text-[13.5px] text-silver-300 hover:text-white transition-colors px-3 py-2">Σύνδεση</a>
+        <a href="#cta" class="group relative inline-flex items-center gap-1.5 text-[13.5px] font-medium text-ink-950 bg-silver-100 hover:bg-white rounded-full px-4 py-2 transition-all">
+          Ξεκίνα
+          <svg aria-hidden="true" viewBox="0 0 24 24" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center rounded-lg glass" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="mobileMenu">
+        <svg id="iconOpen" aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg id="iconClose" aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobileMenu" class="md:hidden hidden border-t border-white/5 bg-ink-950/95 backdrop-blur-xl">
+    <div class="px-6 py-6 flex flex-col gap-1">
+      <a href="#features" class="mobile-link py-3 text-silver-200 hover:text-white transition-colors">Χαρακτηριστικά</a>
+      <a href="#security" class="mobile-link py-3 text-silver-200 hover:text-white transition-colors">Ασφάλεια</a>
+      <a href="#pricing"  class="mobile-link py-3 text-silver-200 hover:text-white transition-colors">Τιμές</a>
+      <a href="#faq"      class="mobile-link py-3 text-silver-200 hover:text-white transition-colors">Συχνές ερωτήσεις</a>
+      <div class="h-px bg-white/5 my-3"></div>
+      <div class="flex items-center gap-2 pb-2">
+        <a href="../index.html" class="font-mono text-[11px] tracking-wider text-silver-400" hreflang="en" lang="en">EN</a>
+        <span class="text-silver-600">/</span>
+        <a href="index.html" class="font-mono text-[11px] tracking-wider text-white" aria-current="page">EL</a>
+      </div>
+      <a href="#" class="py-3 text-silver-300 hover:text-white transition-colors">Σύνδεση</a>
+      <a href="#cta" class="mobile-link mt-2 inline-flex items-center justify-center gap-1.5 font-medium text-ink-950 bg-silver-100 rounded-full px-5 py-3">Ξεκίνα</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="relative min-h-[100svh] flex items-center pt-32 pb-24 overflow-hidden" aria-labelledby="hero-title">
+  <div class="absolute inset-0 bg-grid mask-fade opacity-70"></div>
+  <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.06),transparent_60%)] animate-glow pointer-events-none"></div>
+  <div class="absolute top-1/3 -left-32 w-[500px] h-[500px] rounded-full bg-[radial-gradient(circle,rgba(120,140,255,0.06),transparent_65%)] pointer-events-none"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 w-full">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <div class="lg:col-span-6 text-center lg:text-left">
+        <div class="reveal inline-flex items-center gap-2 rounded-full glass px-3.5 py-1.5 mb-7">
+          <span class="relative flex w-1.5 h-1.5">
+            <span class="absolute inline-flex w-full h-full rounded-full bg-emerald-400 opacity-75 animate-ping"></span>
+            <span class="relative inline-flex w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          </span>
+          <span class="font-mono text-[11px] tracking-widest text-silver-300 uppercase">Zero-knowledge θησαυροφυλάκιο</span>
+        </div>
+
+        <h1 id="hero-title" class="reveal text-[44px] leading-[1.05] sm:text-6xl lg:text-[68px] font-semibold tracking-[-0.03em] mb-6" style="--d:80ms">
+          <span class="text-silver-grad">Μοιράσου με τόλμη.</span><br/>
+          <span class="text-silver-400">Μείνε ιδιωτικός.</span>
+        </h1>
+
+        <p class="reveal text-[16.5px] leading-relaxed text-silver-400 max-w-xl mx-auto lg:mx-0 mb-9" style="--d:180ms">
+          Το Vaultic είναι το κρυπτογραφημένο θησαυροφυλάκιο για δημιουργούς και στούντιο. Στείλε drafts, έλεγξε την πρόσβαση, και δες ακριβώς ποιος ανοίγει τι — χωρίς να εκτεθεί ποτέ το έργο σου.
+        </p>
+
+        <div class="reveal flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-8" style="--d:280ms">
+          <a href="#cta" class="group inline-flex items-center justify-center gap-2 font-medium text-ink-950 bg-silver-100 hover:bg-white rounded-full px-6 py-3.5 transition-all hover:shadow-[0_0_40px_-8px_rgba(255,255,255,0.5)]">
+            Δημιούργησε το θησαυροφυλάκιό σου
+            <svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#" class="inline-flex items-center justify-center gap-2 font-medium text-silver-200 glass hover:bg-white/5 rounded-full px-6 py-3.5 transition-colors">
+            <svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m10 8.5 6 3.5-6 3.5v-7Z"/></svg>
+            Δες το demo
+          </a>
+        </div>
+
+        <div class="reveal flex flex-wrap items-center gap-x-6 gap-y-2 justify-center lg:justify-start font-mono text-[11px] tracking-wider text-silver-500 uppercase" style="--d:380ms">
+          <span class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-silver-500"></span>E2E κρυπτογράφηση</span>
+          <span class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-silver-500"></span>SOC 2 Type II</span>
+          <span class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-silver-500"></span>Χωρίς κάρτα</span>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 relative reveal" style="--d:300ms">
+        <div class="relative mx-auto max-w-[520px]">
+          <div class="absolute -inset-10 bg-[radial-gradient(circle_at_50%_40%,rgba(255,255,255,0.09),transparent_65%)] blur-2xl"></div>
+
+          <div class="relative rounded-2xl bg-ink-850 border border-white/8 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.9)] overflow-hidden">
+            <div class="flex items-center gap-3 px-4 py-3 border-b border-white/5 bg-white/[0.015]">
+              <div class="flex gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-white/10"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-white/10"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-white/10"></span>
+              </div>
+              <div class="flex-1 flex justify-center">
+                <div class="flex items-center gap-1.5 px-3 py-1 rounded-md bg-white/[0.03] border border-white/5 text-[11px] font-mono text-silver-400">
+                  <svg aria-hidden="true" viewBox="0 0 24 24" class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+                  vaultic.app/d/studio-nord
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 space-y-2.5">
+              <div class="flex items-center gap-3.5 p-3.5 rounded-xl bg-white/[0.02] border border-white/5">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-violet-500/20 to-violet-500/5 border border-violet-400/20 flex items-center justify-center">
+                  <svg aria-hidden="true" viewBox="0 0 24 24" class="w-4.5 h-4.5 text-violet-300" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6a2 2 0 0 1 2-2h5l2 2h5a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Z"/></svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center justify-between gap-3">
+                    <p class="text-[13.5px] font-medium truncate">Draft_v3.fig</p>
+                    <span class="font-mono text-[10px] text-emerald-300/90 bg-emerald-400/10 border border-emerald-400/20 rounded-full px-2 py-0.5 whitespace-nowrap">Κρυπτογραφημένο</span>
+                  </div>
+                  <p class="font-mono text-[11px] text-silver-500 mt-1">2.4 MB · 4 προβολές · λήγει σε 48ω</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3.5 p-3.5 rounded-xl bg-white/[0.02] border border-white/5">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-sky-500/20 to-sky-500/5 border border-sky-400/20 flex items-center justify-center">
+                  <svg aria-hidden="true" viewBox="0 0 24 24" class="w-4.5 h-4.5 text-sky-300" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6a2 2 0 0 1 2-2h5l2 2h5a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Z"/></svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center justify-between gap-3">
+                    <p class="text-[13.5px] font-medium truncate">Final_cuts.zip</p>
+                    <span class="font-mono text-[10px] text-emerald-300/90 bg-emerald-400/10 border border-emerald-400/20 rounded-full px-2 py-0.5 whitespace-nowrap">Κρυπτογραφημένο</span>
+                  </div>
+                  <p class="font-mono text-[11px] text-silver-500 mt-1">1.2 GB · 1 προβολή · λήγει σε 7ημ</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3.5 p-3.5 rounded-xl bg-white/[0.02] border border-white/5">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500/20 to-amber-500/5 border border-amber-400/20 flex items-center justify-center">
+                  <svg aria-hidden="true" viewBox="0 0 24 24" class="w-4.5 h-4.5 text-amber-300" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6a2 2 0 0 1 2-2h5l2 2h5a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Z"/></svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center justify-between gap-3">
+                    <p class="text-[13.5px] font-medium truncate">Moodboard.pdf</p>
+                    <span class="font-mono text-[10px] text-amber-300/90 bg-amber-400/10 border border-amber-400/20 rounded-full px-2 py-0.5 whitespace-nowrap">Υδατογράφημα</span>
+                  </div>
+                  <p class="font-mono text-[11px] text-silver-500 mt-1">18 MB · 12 προβολές · λήγει σε 30ημ</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="absolute -left-6 lg:-left-10 top-24 glass rounded-xl px-3.5 py-2.5 shadow-xl animate-float hidden sm:flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-lg bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center">
+              <svg aria-hidden="true" viewBox="0 0 24 24" class="w-3.5 h-3.5 text-emerald-300" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6l-8-4Z"/></svg>
+            </div>
+            <div>
+              <p class="text-[11px] font-medium leading-none">Κρυπτογράφηση στον browser</p>
+              <p class="font-mono text-[9.5px] text-silver-500 mt-1">AES-256-GCM</p>
+            </div>
+          </div>
+
+          <div class="absolute -right-4 lg:-right-8 bottom-16 glass rounded-xl px-3.5 py-2.5 shadow-xl animate-float hidden sm:flex items-center gap-2.5" style="animation-delay: -3s">
+            <div class="w-7 h-7 rounded-lg bg-sky-400/10 border border-sky-400/20 flex items-center justify-center">
+              <svg aria-hidden="true" viewBox="0 0 24 24" class="w-3.5 h-3.5 text-sky-300" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12s3.5-7 9-7 9 7 9 7-3.5 7-9 7-9-7-9-7Z"/><circle cx="12" cy="12" r="2.5"/></svg>
+            </div>
+            <div>
+              <p class="text-[11px] font-medium leading-none">Άνοιξε πριν 2λ</p>
+              <p class="font-mono text-[9.5px] text-silver-500 mt-1">Mara L. · Βερολίνο</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-24 lg:mt-32">
+      <p class="reveal text-center font-mono text-[10.5px] tracking-[0.25em] text-silver-500 uppercase mb-8">Μας εμπιστεύονται σύγχρονα στούντιο</p>
+      <div class="reveal relative overflow-hidden">
+        <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-ink-950 to-transparent z-10 pointer-events-none"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-ink-950 to-transparent z-10 pointer-events-none"></div>
+        <div class="flex animate-marquee gap-16 w-max">
+          <div class="flex items-center gap-16 text-silver-500 font-medium text-lg tracking-tight whitespace-nowrap">
+            <span class="opacity-60">Studio Nord</span>
+            <span class="opacity-60 font-serif italic">Slate &amp; Co</span>
+            <span class="opacity-60 tracking-[0.2em] text-base">HALCYON</span>
+            <span class="opacity-60">Format°</span>
+            <span class="opacity-60 font-mono text-base">NORTH_</span>
+            <span class="opacity-60">Kessler</span>
+          </div>
+          <div class="flex items-center gap-16 text-silver-500 font-medium text-lg tracking-tight whitespace-nowrap" aria-hidden="true">
+            <span class="opacity-60">Studio Nord</span>
+            <span class="opacity-60 font-serif italic">Slate &amp; Co</span>
+            <span class="opacity-60 tracking-[0.2em] text-base">HALCYON</span>
+            <span class="opacity-60">Format°</span>
+            <span class="opacity-60 font-mono text-base">NORTH_</span>
+            <span class="opacity-60">Kessler</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="relative py-16 border-y border-white/5" aria-label="Βασικά μεγέθη">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div class="reveal text-center md:text-left">
+        <p class="text-3xl lg:text-4xl font-semibold tracking-tight text-silver-grad"><span class="counter" data-target="1.2" data-decimals="1">0</span>M+</p>
+        <p class="mt-2 font-mono text-[10.5px] tracking-[0.2em] text-silver-500 uppercase">Ασφαλισμένα αρχεία</p>
+      </div>
+      <div class="reveal text-center md:text-left" style="--d:80ms">
+        <p class="text-3xl lg:text-4xl font-semibold tracking-tight text-silver-grad"><span class="counter" data-target="99.99" data-decimals="2">0</span>%</p>
+        <p class="mt-2 font-mono text-[10.5px] tracking-[0.2em] text-silver-500 uppercase">Uptime SLA</p>
+      </div>
+      <div class="reveal text-center md:text-left" style="--d:160ms">
+        <p class="text-3xl lg:text-4xl font-semibold tracking-tight text-silver-grad"><span class="counter" data-target="40">0</span>+</p>
+        <p class="mt-2 font-mono text-[10.5px] tracking-[0.2em] text-silver-500 uppercase">Χώρες</p>
+      </div>
+      <div class="reveal text-center md:text-left" style="--d:240ms">
+        <p class="text-3xl lg:text-4xl font-semibold tracking-tight text-silver-grad"><span class="counter" data-target="0">0</span></p>
+        <p class="mt-2 font-mono text-[10.5px] tracking-[0.2em] text-silver-500 uppercase">Παραβιάσεις. Ποτέ.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="relative py-28 lg:py-36" aria-labelledby="features-title">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-2xl mb-16">
+      <p class="reveal font-mono text-[11px] tracking-[0.25em] text-silver-500 uppercase mb-4">// Χαρακτηριστικά</p>
+      <h2 id="features-title" class="reveal text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-[-0.025em] mb-5" style="--d:80ms">
+        <span class="text-silver-grad">Κρυπτογραφημένη κοινή χρήση, φτιαγμένη για έλεγχο.</span>
+      </h2>
+      <p class="reveal text-silver-400 text-[16.5px] leading-relaxed" style="--d:160ms">
+        Κάθε λεπτομέρεια σχεδιασμένη ώστε η δουλειά σου να παραμένει δική σου — από τη στιγμή που ένα αρχείο μπαίνει στο θησαυροφυλάκιο μέχρι το δευτερόλεπτο που ο πελάτης κλείνει το tab.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden border border-white/5">
+      <article class="reveal group relative bg-ink-900 p-8 lg:p-10 hover:bg-ink-850 transition-colors">
+        <div class="w-11 h-11 rounded-xl bg-white/[0.03] border border-white/8 flex items-center justify-center mb-6">
+          <svg aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5 text-silver-200" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15" r="1.4" fill="currentColor" stroke="none"/></svg>
+        </div>
+        <h3 class="text-[17px] font-semibold tracking-tight mb-2.5">End-to-end κρυπτογράφηση</h3>
+        <p class="text-[14px] leading-relaxed text-silver-400">Τα αρχεία κρυπτογραφούνται στον browser σου πριν φύγουν ποτέ από τη συσκευή σου. Ούτε εμείς δεν μπορούμε να τα διαβάσουμε.</p>
+      </article>
+
+      <article class="reveal group relative bg-ink-900 p-8 lg:p-10 hover:bg-ink-850 transition-colors" style="--d:60ms">
+        <div class="w-11 h-11 rounded-xl bg-white/[0.03] border border-white/8 flex items-center justify-center mb-6">
+          <svg aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5 text-silver-200" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4"/></svg>
+        </div>
+        <h3 class="text-[17px] font-semibold tracking-tight mb-2.5">Λεπτομερή δικαιώματα</h3>
+        <p class="text-[14px] leading-relaxed text-silver-400">Αποφάσισε ποιος μπορεί να δει, να κατεβάσει ή να προωθήσει. Ανακάλεσε την πρόσβαση με ένα κλικ, οπουδήποτε στον κόσμο.</p>
+      </article>
+
+      <article class="reveal group relative bg-ink-900 p-8 lg:p-10 hover:bg-ink-850 transition-colors" style="--d:120ms">
+        <div class="w-11 h-11 rounded-xl bg-white/[0.03] border border-white/8 flex items-center justify-center mb-6">
+          <svg aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5 text-silver-200" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </div>
+        <h3 class="text-[17px] font-semibold tracking-tight mb-2.5">Λήγοντες σύνδεσμοι</h3>
+        <p class="text-[14px] leading-relaxed text-silver-400">Όρισε συνδέσμους που αυτοκαταστρέφονται μετά από χρόνο, αριθμό προβολών ή ένα μόνο άνοιγμα. Εσύ αποφασίζεις.</p>
+      </article>
+
+      <article class="reveal group relative bg-ink-900 p-8 lg:p-10 hover:bg-ink-850 transition-colors">
+        <div class="w-11 h-11 rounded-xl bg-white/[0.03] border border-white/8 flex items-center justify-center mb-6">
+          <svg aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5 text-silver-200" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+        </div>
+        <h3 class="text-[17px] font-semibold tracking-tight mb-2.5">Δυναμικά υδατογραφήματα</h3>
+        <p class="text-[14px] leading-relaxed text-silver-400">Κάθε θεατής λαμβάνει ένα μοναδικό forensic υδατογράφημα στην προεπισκόπηση. Τα screenshots δεν φεύγουν ποτέ καθαρά.</p>
+      </article>
+
+      <article class="reveal group relative bg-ink-900 p-8 lg:p-10 hover:bg-ink-850 transition-colors" style="--d:60ms">
+        <div class="w-11 h-11 rounded-xl bg-white/[0.03] border border-white/8 flex items-center justify-center mb-6">
+          <svg aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5 text-silver-200" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5M4 19h16"/><path d="m7 15 4-5 3 3 5-7"/></svg>
+        </div>
+        <h3 class="text-[17px] font-semibold tracking-tight mb-2.5">Analytics σε πραγματικό χρόνο</h3>
+        <p class="text-[14px] leading-relaxed text-silver-400">Δες ανοίγματα, χρόνο παραμονής και γεωγραφία τη στιγμή που συμβαίνουν. Μάθε ποιο draft τράβηξε πραγματικά την προσοχή.</p>
+      </article>
+
+      <article class="reveal group relative bg-ink-900 p-8 lg:p-10 hover:bg-ink-850 transition-colors" style="--d:120ms">
+        <div class="w-11 h-11 rounded-xl bg-white/[0.03] border border-white/8 flex items-center justify-center mb-6">
+          <svg aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5 text-silver-200" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h8"/></svg>
+        </div>
+        <h3 class="text-[17px] font-semibold tracking-tight mb-2.5">Portals πελατών</h3>
+        <p class="text-[14px] leading-relaxed text-silver-400">Δώσε σε κάθε πελάτη έναν χώρο με το brand σου. Χωρίς logins, χωρίς χάος, χωρίς ατελείωτα email threads με συνημμένα zip.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="relative py-28 lg:py-36 border-t border-white/5" aria-labelledby="how-title">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-2xl mb-16">
+      <p class="reveal font-mono text-[11px] tracking-[0.25em] text-silver-500 uppercase mb-4">// Πώς λειτουργεί</p>
+      <h2 id="how-title" class="reveal text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-[-0.025em] mb-5" style="--d:80ms">
+        <span class="text-silver-grad">Μοιράσου κρυπτογραφημένα αρχεία σε τρία βήματα.</span>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+      <div class="reveal">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="font-mono text-[11px] text-silver-500">01</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-white/15 to-transparent"></div>
+        </div>
+        <h3 class="text-xl font-semibold tracking-tight mb-3">Ρίξε τα αρχεία σου</h3>
+        <p class="text-[14.5px] leading-relaxed text-silver-400 mb-6">Σύρε οποιοδήποτε draft μέσα στο θησαυροφυλάκιο. Η κρυπτογράφηση γίνεται ακαριαία, στον browser σου, πριν περάσει έστω ένα byte στο δίκτυο.</p>
+        <div class="glass rounded-xl p-4 flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-white/[0.03] border border-dashed border-white/15 flex items-center justify-center">
+            <svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4 text-silver-400" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>
+          </div>
+          <span class="font-mono text-[11.5px] text-silver-400">drag_to_encrypt.fig</span>
+        </div>
+      </div>
+
+      <div class="reveal" style="--d:100ms">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="font-mono text-[11px] text-silver-500">02</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-white/15 to-transparent"></div>
+        </div>
+        <h3 class="text-xl font-semibold tracking-tight mb-3">Όρισε τους κανόνες</h3>
+        <p class="text-[14.5px] leading-relaxed text-silver-400 mb-6">Διάλεξε ποιος βλέπει τι, για πόσο, και με ποιες προστασίες. Υδατογραφήματα, λήξεις, δικαιώματα λήψης — όλα δικά σου.</p>
+        <div class="glass rounded-xl p-4 space-y-2.5">
+          <div class="flex items-center justify-between text-[11.5px]"><span class="text-silver-400">Υδατογράφημα</span><span class="font-mono text-emerald-300">ΝΑΙ</span></div>
+          <div class="flex items-center justify-between text-[11.5px]"><span class="text-silver-400">Λήξη</span><span class="font-mono text-silver-200">48ω</span></div>
+          <div class="flex items-center justify-between text-[11.5px]"><span class="text-silver-400">Λήψεις</span><span class="font-mono text-amber-300">ΑΝΕΝΕΡΓΕΣ</span></div>
+        </div>
+      </div>
+
+      <div class="reveal" style="--d:200ms">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="font-mono text-[11px] text-silver-500">03</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-white/15 to-transparent"></div>
+        </div>
+        <h3 class="text-xl font-semibold tracking-tight mb-3">Μοιράσου με σιγουριά</h3>
+        <p class="text-[14.5px] leading-relaxed text-silver-400 mb-6">Στείλε έναν σύνδεσμο. Δες τι συμβαίνει. Ανακάλεσε όποτε θέλεις. Ο πελάτης σου δεν χρειάζεται ποτέ λογαριασμό — μόνο browser.</p>
+        <div class="glass rounded-xl p-4 flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center">
+            <svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4 text-emerald-300" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+          </div>
+          <span class="font-mono text-[11.5px] text-silver-400">link_copied · ready</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECURITY -->
+<section id="security" class="relative py-28 lg:py-36 border-t border-white/5 overflow-hidden" aria-labelledby="security-title">
+  <div class="absolute inset-0 bg-grid opacity-40 mask-fade"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.04),transparent_65%)] pointer-events-none"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-14 items-center">
+      <div class="lg:col-span-6">
+        <p class="reveal font-mono text-[11px] tracking-[0.25em] text-silver-500 uppercase mb-4">// Ασφάλεια</p>
+        <h2 id="security-title" class="reveal text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-[-0.025em] mb-6" style="--d:80ms">
+          <span class="text-silver-grad">Zero-knowledge κρυπτογράφηση εκ σχεδιασμού.</span>
+        </h2>
+        <p class="reveal text-[16.5px] leading-relaxed text-silver-400 mb-8 max-w-xl" style="--d:160ms">
+          Τα κλειδιά σου δεν αγγίζουν ποτέ τους servers μας. Τα αρχεία κρυπτογραφούνται client-side με AES-256, και τα metadata γίνονται hash πριν αποθηκευτούν.
+        </p>
+
+        <div class="reveal space-y-3.5" style="--d:240ms">
+          <div class="flex items-start gap-3">
+            <svg aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5 text-emerald-300 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+            <span class="text-[14.5px] text-silver-300">AES-256 κρυπτογράφηση client-side, fallback XChaCha20</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5 text-emerald-300 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+            <span class="text-[14.5px] text-silver-300">SOC 2 Type II · GDPR · BAAs έτοιμα για HIPAA</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5 text-emerald-300 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+            <span class="text-[14.5px] text-silver-300">Ανεξάρτητες δοκιμές διείσδυσης τρίτων, ανά τρίμηνο</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5 text-emerald-300 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+            <span class="text-[14.5px] text-silver-300">Open-source βιβλιοθήκη κρυπτογραφίας, με εξωτερικό review</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 reveal" style="--d:200ms">
+        <div class="relative max-w-[480px] mx-auto">
+          <div class="glass rounded-2xl p-6 lg:p-8">
+            <div class="flex items-center gap-3.5 mb-5">
+              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-white/10 to-white/[0.02] border border-white/10 flex items-center justify-center">
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5 text-silver-100" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8"/></svg>
+              </div>
+              <div class="flex-1">
+                <p class="text-[13.5px] font-medium">Η συσκευή σου</p>
+                <p class="font-mono text-[10.5px] text-silver-500 mt-0.5">plaintext · τα κλειδιά μένουν εδώ</p>
+              </div>
+              <span class="font-mono text-[10px] text-silver-500 border border-white/10 rounded-full px-2 py-0.5">local</span>
+            </div>
+
+            <div class="relative pl-[21px] mb-5">
+              <div class="absolute left-[21px] top-0 bottom-0 w-px bg-gradient-to-b from-white/20 via-white/10 to-white/20"></div>
+              <div class="ml-6 inline-flex items-center gap-2 rounded-full bg-emerald-400/10 border border-emerald-400/20 px-3 py-1.5">
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="w-3 h-3 text-emerald-300" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+                <span class="font-mono text-[10.5px] text-emerald-200">AES-256-GCM</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3.5 mb-5">
+              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-white/10 to-white/[0.02] border border-white/10 flex items-center justify-center">
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5 text-silver-100" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6l-8-4Z"/></svg>
+              </div>
+              <div class="flex-1">
+                <p class="text-[13.5px] font-medium">Vaultic edge</p>
+                <p class="font-mono text-[10.5px] text-silver-500 mt-0.5">μόνο ciphertext</p>
+              </div>
+              <span class="font-mono text-[10px] text-silver-500 border border-white/10 rounded-full px-2 py-0.5">blind</span>
+            </div>
+
+            <div class="relative pl-[21px] mb-5">
+              <div class="absolute left-[21px] top-0 bottom-0 w-px bg-gradient-to-b from-white/20 via-white/10 to-white/20"></div>
+              <div class="ml-6 inline-flex items-center gap-2 rounded-full bg-white/[0.03] border border-white/10 px-3 py-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-sky-300"></span>
+                <span class="font-mono text-[10.5px] text-silver-300">signed link</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3.5">
+              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-white/10 to-white/[0.02] border border-white/10 flex items-center justify-center">
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5 text-silver-100" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>
+              </div>
+              <div class="flex-1">
+                <p class="text-[13.5px] font-medium">Παραλήπτης</p>
+                <p class="font-mono text-[10.5px] text-silver-500 mt-0.5">αποκρυπτογράφηση στον browser</p>
+              </div>
+              <span class="font-mono text-[10px] text-silver-500 border border-white/10 rounded-full px-2 py-0.5">1 κλικ</span>
+            </div>
+          </div>
+
+          <div class="mt-4 flex justify-center">
+            <div class="inline-flex items-center gap-2 font-mono text-[10.5px] text-silver-500">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              verified · audited · independent
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="relative py-28 lg:py-36 border-t border-white/5" aria-labelledby="testimonials-title">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-2xl mb-16">
+      <p class="reveal font-mono text-[11px] tracking-[0.25em] text-silver-500 uppercase mb-4">// Αγαπημένο των στούντιο</p>
+      <h2 id="testimonials-title" class="reveal text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-[-0.025em]" style="--d:80ms">
+        <span class="text-silver-grad">Γιατί τα στούντιο επιλέγουν το Vaultic.</span>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <figure class="reveal glass rounded-2xl p-7 flex flex-col">
+        <svg aria-hidden="true" viewBox="0 0 24 24" class="w-6 h-6 text-silver-500 mb-5" fill="currentColor"><path d="M7 7h4v4H9v4H5V9c0-1.1.9-2 2-2Zm10 0h4v4h-2v4h-4V9c0-1.1.9-2 2-2Z"/></svg>
+        <blockquote class="text-[15px] leading-relaxed text-silver-200 flex-1">Αντικαταστήσαμε τρία εργαλεία με το Vaultic. Οι πελάτες σταμάτησαν επιτέλους να ρωτάνε «ποιος σύνδεσμος ήταν αυτός;» — και παραδίδουμε πιο γρήγορα.</blockquote>
+        <figcaption class="mt-6 flex items-center gap-3 pt-5 border-t border-white/5">
+          <div class="w-9 h-9 rounded-full bg-gradient-to-br from-violet-400/40 to-violet-600/20 border border-white/10 flex items-center justify-center text-[12px] font-medium">ML</div>
+          <div><p class="text-[13px] font-medium">Mara Lindqvist</p><p class="font-mono text-[10.5px] text-silver-500">Creative Director · Studio Nord</p></div>
+        </figcaption>
+      </figure>
+
+      <figure class="reveal glass rounded-2xl p-7 flex flex-col" style="--d:100ms">
+        <svg aria-hidden="true" viewBox="0 0 24 24" class="w-6 h-6 text-silver-500 mb-5" fill="currentColor"><path d="M7 7h4v4H9v4H5V9c0-1.1.9-2 2-2Zm10 0h4v4h-2v4h-4V9c0-1.1.9-2 2-2Z"/></svg>
+        <blockquote class="text-[15px] leading-relaxed text-silver-200 flex-1">Ο συνδυασμός υδατογραφήματος + analytics μας κέρδισε μια πρόταση. Μπορούσαμε να αποδείξουμε ακριβώς τι είδε ο πελάτης, και πότε. Αυτό είναι υπερδύναμη.</blockquote>
+        <figcaption class="mt-6 flex items-center gap-3 pt-5 border-t border-white/5">
+          <div class="w-9 h-9 rounded-full bg-gradient-to-br from-sky-400/40 to-sky-600/20 border border-white/10 flex items-center justify-center text-[12px] font-medium">DF</div>
+          <div><p class="text-[13px] font-medium">Diego Ferreira</p><p class="font-mono text-[10.5px] text-silver-500">Founder · Slate &amp; Co</p></div>
+        </figcaption>
+      </figure>
+
+      <figure class="reveal glass rounded-2xl p-7 flex flex-col" style="--d:200ms">
+        <svg aria-hidden="true" viewBox="0 0 24 24" class="w-6 h-6 text-silver-500 mb-5" fill="currentColor"><path d="M7 7h4v4H9v4H5V9c0-1.1.9-2 2-2Zm10 0h4v4h-2v4h-4V9c0-1.1.9-2 2-2Z"/></svg>
+        <blockquote class="text-[15px] leading-relaxed text-silver-200 flex-1">Νιώθει σαν το Linear να συνάντησε το 1Password. Είναι το μόνο εργαλείο με το οποίο η ομάδα μας χαίρεται πραγματικά να μοιράζεται αρχεία.</blockquote>
+        <figcaption class="mt-6 flex items-center gap-3 pt-5 border-t border-white/5">
+          <div class="w-9 h-9 rounded-full bg-gradient-to-br from-emerald-400/40 to-emerald-600/20 border border-white/10 flex items-center justify-center text-[12px] font-medium">PR</div>
+          <div><p class="text-[13px] font-medium">Priya Raman</p><p class="font-mono text-[10.5px] text-silver-500">Head of Ops · Halcyon</p></div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="relative py-28 lg:py-36 border-t border-white/5" aria-labelledby="pricing-title">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-2xl mx-auto text-center mb-16">
+      <p class="reveal font-mono text-[11px] tracking-[0.25em] text-silver-500 uppercase mb-4">// Τιμές</p>
+      <h2 id="pricing-title" class="reveal text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-[-0.025em] mb-5" style="--d:80ms">
+        <span class="text-silver-grad">Απλές, διαφανείς τιμές.</span>
+      </h2>
+      <p class="reveal text-silver-400 text-[16.5px]" style="--d:160ms">Ξεκίνα δωρεάν. Αναβάθμισε όταν το θησαυροφυλάκιό σου σοβαρέψει.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <article class="reveal glass rounded-2xl p-8 flex flex-col">
+        <div class="mb-6">
+          <p class="font-mono text-[10.5px] tracking-[0.2em] text-silver-500 uppercase mb-3">Solo</p>
+          <div class="flex items-baseline gap-1.5">
+            <span class="text-4xl font-semibold tracking-tight">€0</span>
+            <span class="text-silver-500 text-[13px]">/ για πάντα</span>
+          </div>
+          <p class="text-[13.5px] text-silver-400 mt-3">Για freelancers που δοκιμάζουν τα νερά.</p>
+        </div>
+        <ul class="space-y-3 mb-8 flex-1">
+          <li class="flex items-start gap-2.5 text-[13.5px] text-silver-300"><svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4 text-silver-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg>2 GB κρυπτογραφημένο θησαυροφυλάκιο</li>
+          <li class="flex items-start gap-2.5 text-[13.5px] text-silver-300"><svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4 text-silver-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg>3 ενεργοί σύνδεσμοι</li>
+          <li class="flex items-start gap-2.5 text-[13.5px] text-silver-300"><svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4 text-silver-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg>Βασικά analytics προβολών</li>
+          <li class="flex items-start gap-2.5 text-[13.5px] text-silver-300"><svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4 text-silver-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg>Λήγοντες σύνδεσμοι</li>
+        </ul>
+        <a href="#" class="text-center font-medium text-[14px] text-silver-100 glass hover:bg-white/5 rounded-full py-3 transition-colors">Ξεκίνα</a>
+      </article>
+
+      <article class="reveal relative rounded-2xl p-[1px] bg-gradient-to-b from-white/25 via-white/10 to-transparent lg:-mt-4 lg:-mb-4" style="--d:100ms">
+        <div class="relative rounded-2xl bg-ink-850 p-8 flex flex-col h-full">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-silver-100 text-ink-950 font-mono text-[10px] tracking-[0.15em] uppercase px-3 py-1">Πιο δημοφιλές</span>
+          </div>
+          <div class="mb-6 mt-2">
+            <p class="font-mono text-[10.5px] tracking-[0.2em] text-silver-300 uppercase mb-3">Studio</p>
+            <div class="flex items-baseline gap-1.5">
+              <span class="text-4xl font-semibold tracking-tight text-silver-grad">€19</span>
+              <span class="text-silver-500 text-[13px]">/ μήνα</span>
+            </div>
+            <p class="text-[13.5px] text-silver-400 mt-3">Για μικρές ομάδες και στούντιο σε ανάπτυξη.</p>
+          </div>
+          <ul class="space-y-3 mb-8 flex-1">
+            <li class="flex items-start gap-2.5 text-[13.5px] text-silver-200"><svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4 text-emerald-300 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg>500 GB κρυπτογραφημένο θησαυροφυλάκιο</li>
+            <li class="flex items-start gap-2.5 text-[13.5px] text-silver-200"><svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4 text-emerald-300 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg>Απεριόριστοι ενεργοί σύνδεσμοι</li>
+            <li class="flex items-start gap-2.5 text-[13.5px] text-silver-200"><svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4 text-emerald-300 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg>Προσαρμοσμένα υδατογραφήματα</li>
+            <li class="flex items-start gap-2.5 text-[13.5px] text-silver-200"><svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4 text-emerald-300 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg>Portals πελατών</li>
+            <li class="flex items-start gap-2.5 text-[13.5px] text-silver-200"><svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4 text-emerald-300 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg>Priority support</li>
+          </ul>
+          <a href="#" class="text-center font-medium text-[14px] text-ink-950 bg-silver-100 hover:bg-white rounded-full py-3 transition-colors shadow-[0_0_40px_-8px_rgba(255,255,255,0.4)]">Δωρεάν δοκιμή</a>
+        </div>
+      </article>
+
+      <article class="reveal glass rounded-2xl p-8 flex flex-col" style="--d:200ms">
+        <div class="mb-6">
+          <p class="font-mono text-[10.5px] tracking-[0.2em] text-silver-500 uppercase mb-3">Agency</p>
+          <div class="flex items-baseline gap-1.5">
+            <span class="text-4xl font-semibold tracking-tight">€59</span>
+            <span class="text-silver-500 text-[13px]">/ μήνα</span>
+          </div>
+          <p class="text-[13.5px] text-silver-400 mt-3">Για ομάδες με compliance στο μενού.</p>
+        </div>
+        <ul class="space-y-3 mb-8 flex-1">
+          <li class="flex items-start gap-2.5 text-[13.5px] text-silver-300"><svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4 text-silver-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg>Απεριόριστος χώρος</li>
+          <li class="flex items-start gap-2.5 text-[13.5px] text-silver-300"><svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4 text-silver-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg>SSO / SAML</li>
+          <li class="flex items-start gap-2.5 text-[13.5px] text-silver-300"><svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4 text-silver-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg>Custom domain</li>
+          <li class="flex items-start gap-2.5 text-[13.5px] text-silver-300"><svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4 text-silver-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg>Audit logs</li>
+          <li class="flex items-start gap-2.5 text-[13.5px] text-silver-300"><svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4 text-silver-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg>Αποκλειστικός CSM</li>
+        </ul>
+        <a href="#" class="text-center font-medium text-[14px] text-silver-100 glass hover:bg-white/5 rounded-full py-3 transition-colors">Επικοινωνία με πωλήσεις</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="relative py-28 lg:py-36 border-t border-white/5" aria-labelledby="faq-title">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <div class="mb-14 text-center">
+      <p class="reveal font-mono text-[11px] tracking-[0.25em] text-silver-500 uppercase mb-4">// Συχνές ερωτήσεις</p>
+      <h2 id="faq-title" class="reveal text-3xl sm:text-4xl font-semibold tracking-[-0.025em]" style="--d:80ms">
+        <span class="text-silver-grad">Κρυπτογραφημένη κοινή χρήση — FAQ.</span>
+      </h2>
+    </div>
+
+    <div class="space-y-3">
+      <div class="faq-item reveal glass rounded-xl overflow-hidden">
+        <button class="faq-trigger w-full flex items-center justify-between gap-4 text-left px-6 py-5" aria-expanded="false">
+          <span class="text-[15.5px] font-medium tracking-tight">Μπορεί πραγματικά το Vaultic να μη βλέπει τα αρχεία μου;</span>
+          <svg aria-hidden="true" viewBox="0 0 24 24" class="faq-icon w-4 h-4 text-silver-400 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-body">
+          <p class="px-6 pb-5 text-[14.5px] leading-relaxed text-silver-400">Σωστά. Τα αρχεία κρυπτογραφούνται στον browser σου με κλειδιά που παράγονται από τη φράση πρόσβασής σου, πριν γίνει οποιοδήποτε upload. Οι servers μας αποθηκεύουν μόνο ciphertext.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal glass rounded-xl overflow-hidden" style="--d:60ms">
+        <button class="faq-trigger w-full flex items-center justify-between gap-4 text-left px-6 py-5" aria-expanded="false">
+          <span class="text-[15.5px] font-medium tracking-tight">Τι γίνεται αν ανακαλέσω έναν σύνδεσμο που έχει ήδη ανοίξει κάποιος;</span>
+          <svg aria-hidden="true" viewBox="0 0 24 24" class="faq-icon w-4 h-4 text-silver-400 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-body">
+          <p class="px-6 pb-5 text-[14.5px] leading-relaxed text-silver-400">Η πρόσβαση τερματίζεται αμέσως. Κάθε ανοιχτή συνεδρία ακυρώνεται στο επόμενο request, και το κλειδί αποκρυπτογράφησης περιστρέφεται.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal glass rounded-xl overflow-hidden" style="--d:120ms">
+        <button class="faq-trigger w-full flex items-center justify-between gap-4 text-left px-6 py-5" aria-expanded="false">
+          <span class="text-[15.5px] font-medium tracking-tight">Χρειάζονται λογαριασμό οι πελάτες μου;</span>
+          <svg aria-hidden="true" viewBox="0 0 24 24" class="faq-icon w-4 h-4 text-silver-400 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-body">
+          <p class="px-6 pb-5 text-[14.5px] leading-relaxed text-silver-400">Όχι. Πατάνε τον σύνδεσμο, επιβεβαιώνονται με magic code ή φράση πρόσβασης, και το αρχείο αποκρυπτογραφείται απευθείας στον browser τους.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal glass rounded-xl overflow-hidden" style="--d:180ms">
+        <button class="faq-trigger w-full flex items-center justify-between gap-4 text-left px-6 py-5" aria-expanded="false">
+          <span class="text-[15.5px] font-medium tracking-tight">Μπορώ να χρησιμοποιήσω το Vaultic για εργασία υπό κανονιστικό πλαίσιο;</span>
+          <svg aria-hidden="true" viewBox="0 0 24 24" class="faq-icon w-4 h-4 text-silver-400 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-body">
+          <p class="px-6 pb-5 text-[14.5px] leading-relaxed text-silver-400">Ναι. Το Vaultic είναι πιστοποιημένο SOC 2 Type II, συμμορφώνεται με GDPR, και προσφέρει BAAs έτοιμα για HIPAA στο πλάνο Agency.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal glass rounded-xl overflow-hidden" style="--d:240ms">
+        <button class="faq-trigger w-full flex items-center justify-between gap-4 text-left px-6 py-5" aria-expanded="false">
+          <span class="text-[15.5px] font-medium tracking-tight">Πώς διαφέρει από το WeTransfer ή το Dropbox;</span>
+          <svg aria-hidden="true" viewBox="0 0 24 24" class="faq-icon w-4 h-4 text-silver-400 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-body">
+          <p class="px-6 pb-5 text-[14.5px] leading-relaxed text-silver-400">Είναι εξαιρετικά στην αποθήκευση. Εμείς είμαστε φτιαγμένοι για έλεγχο. Το Vaultic σου δίνει ανάκληση, forensics, υδατογραφήματα, κανόνες λήξης και κρυπτογραφημένα portals πελατών σε ένα μέρος.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="cta" class="relative py-28 lg:py-40 border-t border-white/5 overflow-hidden" aria-labelledby="cta-title">
+  <div class="absolute inset-0 bg-grid opacity-50 mask-fade"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.06),transparent_60%)] animate-glow pointer-events-none"></div>
+
+  <div class="relative max-w-3xl mx-auto px-6 lg:px-8 text-center">
+    <h2 id="cta-title" class="reveal text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.03em] mb-6">
+      <span class="text-silver-grad">Το επόμενο draft σου</span><br/>
+      <span class="text-silver-400">αξίζει ένα θησαυροφυλάκιο.</span>
+    </h2>
+    <p class="reveal text-[16.5px] leading-relaxed text-silver-400 max-w-xl mx-auto mb-10" style="--d:100ms">
+      Ξεκίνα δωρεάν. Κάλεσε τον πρώτο σου πελάτη σε λιγότερο από δύο λεπτά.
+    </p>
+    <div class="reveal flex flex-col sm:flex-row gap-3 justify-center" style="--d:200ms">
+      <a href="#" class="group inline-flex items-center justify-center gap-2 font-medium text-ink-950 bg-silver-100 hover:bg-white rounded-full px-7 py-4 transition-all hover:shadow-[0_0_50px_-8px_rgba(255,255,255,0.55)]">
+        Δημιούργησε το θησαυροφυλάκιό σου
+        <svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#" class="inline-flex items-center justify-center gap-2 font-medium text-silver-200 glass hover:bg-white/5 rounded-full px-7 py-4 transition-colors">
+        Μίλα με τις πωλήσεις
+      </a>
+    </div>
+    <p class="reveal mt-6 font-mono text-[11px] tracking-wider text-silver-500" style="--d:280ms">Χωρίς πιστωτική κάρτα · Δοκιμή Studio 14 ημερών · Ακύρωση όποτε θέλεις</p>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="relative border-t border-white/5 pt-16 pb-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid md:grid-cols-12 gap-10 mb-14">
+      <div class="md:col-span-4">
+        <a href="index.html" class="flex items-center gap-2.5 mb-5" aria-label="Vaultic — αρχική">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-b from-silver-100 to-silver-400 flex items-center justify-center">
+            <svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4 text-ink-950" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+          <span class="font-semibold tracking-tight">Vaultic</span>
+        </a>
+        <p class="text-[14px] text-silver-400 leading-relaxed max-w-xs mb-6">Zero-knowledge θησαυροφυλάκιο αρχείων για δημιουργούς και στούντιο. Μοιράσου με τόλμη. Μείνε ιδιωτικός.</p>
+        <div class="flex items-center gap-3">
+          <a href="https://twitter.com/vaultic" rel="noopener noreferrer" class="w-9 h-9 rounded-lg glass flex items-center justify-center text-silver-400 hover:text-white hover:bg-white/5 transition-colors" aria-label="Vaultic στο X">
+            <svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor"><path d="M18.244 2H21l-6.545 7.48L22.5 22h-6.19l-4.85-6.34L5.9 22H3.142l7.02-8.02L1.5 2h6.34l4.39 5.79L18.244 2Z"/></svg>
+          </a>
+          <a href="https://github.com/vaultic" rel="noopener noreferrer" class="w-9 h-9 rounded-lg glass flex items-center justify-center text-silver-400 hover:text-white hover:bg-white/5 transition-colors" aria-label="Vaultic στο GitHub">
+            <svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor"><path d="M12 .5C5.6.5.5 5.6.5 12c0 5.1 3.3 9.4 7.9 11 .6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2.9-.3 1.9-.4 2.9-.4s2 .1 2.9.4C18 5.4 19 5.7 19 5.7c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.6 7.9-5.9 7.9-11C23.5 5.6 18.4.5 12 .5Z"/></svg>
+          </a>
+          <a href="https://linkedin.com/company/vaultic" rel="noopener noreferrer" class="w-9 h-9 rounded-lg glass flex items-center justify-center text-silver-400 hover:text-white hover:bg-white/5 transition-colors" aria-label="Vaultic στο LinkedIn">
+            <svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2ZM8.3 18.5H5.4V9.7h2.9v8.8ZM6.8 8.4a1.7 1.7 0 1 1 0-3.4 1.7 1.7 0 0 1 0 3.4Zm12.1 10.1h-2.9v-4.6c0-1.1-.4-1.9-1.4-1.9-.8 0-1.2.5-1.4 1-.1.2-.1.5-.1.8v4.7h-2.9s.1-7.6 0-8.8h2.9v1.2c.4-.6 1.1-1.4 2.7-1.4 2 0 3.5 1.3 3.5 4.1v4.9Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <nav class="md:col-span-2" aria-label="Προϊόν">
+        <p class="font-mono text-[10.5px] tracking-[0.2em] text-silver-500 uppercase mb-4">Προϊόν</p>
+        <ul class="space-y-3 text-[13.5px]">
+          <li><a href="#features" class="text-silver-300 hover:text-white transition-colors">Χαρακτηριστικά</a></li>
+          <li><a href="#pricing" class="text-silver-300 hover:text-white transition-colors">Τιμές</a></li>
+          <li><a href="#security" class="text-silver-300 hover:text-white transition-colors">Ασφάλεια</a></li>
+          <li><a href="#" class="text-silver-300 hover:text-white transition-colors">Changelog</a></li>
+          <li><a href="#" class="text-silver-300 hover:text-white transition-colors">Status</a></li>
+        </ul>
+      </nav>
+
+      <nav class="md:col-span-2" aria-label="Εταιρεία">
+        <p class="font-mono text-[10.5px] tracking-[0.2em] text-silver-500 uppercase mb-4">Εταιρεία</p>
+        <ul class="space-y-3 text-[13.5px]">
+          <li><a href="#" class="text-silver-300 hover:text-white transition-colors">Σχετικά</a></li>
+          <li><a href="#" class="text-silver-300 hover:text-white transition-colors">Blog</a></li>
+          <li><a href="#" class="text-silver-300 hover:text-white transition-colors">Καριέρα</a></li>
+          <li><a href="#" class="text-silver-300 hover:text-white transition-colors">Press</a></li>
+        </ul>
+      </nav>
+
+      <nav class="md:col-span-2" aria-label="Πόροι">
+        <p class="font-mono text-[10.5px] tracking-[0.2em] text-silver-500 uppercase mb-4">Πόροι</p>
+        <ul class="space-y-3 text-[13.5px]">
+          <li><a href="#" class="text-silver-300 hover:text-white transition-colors">Docs</a></li>
+          <li><a href="#" class="text-silver-300 hover:text-white transition-colors">API</a></li>
+          <li><a href="#" class="text-silver-300 hover:text-white transition-colors">Trust center</a></li>
+          <li><a href="#" class="text-silver-300 hover:text-white transition-colors">Υποστήριξη</a></li>
+        </ul>
+      </nav>
+
+      <nav class="md:col-span-2" aria-label="Νομικά">
+        <p class="font-mono text-[10.5px] tracking-[0.2em] text-silver-500 uppercase mb-4">Νομικά</p>
+        <ul class="space-y-3 text-[13.5px]">
+          <li><a href="#" class="text-silver-300 hover:text-white transition-colors">Απόρρητο</a></li>
+          <li><a href="#" class="text-silver-300 hover:text-white transition-colors">Όροι</a></li>
+          <li><a href="#" class="text-silver-300 hover:text-white transition-colors">DPA</a></li>
+          <li><a href="#" class="text-silver-300 hover:text-white transition-colors">Cookies</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="font-mono text-[11px] text-silver-500">© 2026 Vaultic Labs, S.L. — Με επιφύλαξη παντός δικαιώματος.</p>
+      <div class="flex items-center gap-2 font-mono text-[10.5px] text-silver-500">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        Όλα τα συστήματα λειτουργικά
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 20) nav.classList.add('nav-scrolled');
+    else nav.classList.remove('nav-scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const menuBtn = document.getElementById('menuBtn');
+  const menu = document.getElementById('mobileMenu');
+  const iconOpen = document.getElementById('iconOpen');
+  const iconClose = document.getElementById('iconClose');
+
+  const closeMenu = () => {
+    menu.classList.add('hidden');
+    iconOpen.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  };
+  menuBtn.addEventListener('click', () => {
+    const isOpen = !menu.classList.contains('hidden');
+    if (isOpen) closeMenu();
+    else {
+      menu.classList.remove('hidden');
+      iconOpen.classList.add('hidden');
+      iconClose.classList.remove('hidden');
+      menuBtn.setAttribute('aria-expanded', 'true');
+    }
+  });
+  document.querySelectorAll('.mobile-link').forEach(a => a.addEventListener('click', closeMenu));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); revealObserver.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  const counters = document.querySelectorAll('.counter');
+  const animateCounter = (el) => {
+    const target = parseFloat(el.dataset.target);
+    const decimals = parseInt(el.dataset.decimals || '0', 10);
+    const duration = 1600;
+    const start = performance.now();
+    const tick = (now) => {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      const val = target * eased;
+      el.textContent = decimals ? val.toFixed(decimals) : Math.round(val).toString();
+      if (t < 1) requestAnimationFrame(tick);
+      else el.textContent = decimals ? target.toFixed(decimals) : target.toString();
+    };
+    requestAnimationFrame(tick);
+  };
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { animateCounter(e.target); counterObserver.unobserve(e.target); }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => counterObserver.observe(c));
+
+  document.querySelectorAll('.faq-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-trigger')?.setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const id = link.getAttribute('href');
+      if (id.length <= 1) return;
+      const target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      const y = target.getBoundingClientRect().top + window.scrollY - 72;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>
